@@ -61,38 +61,46 @@ app.get('/contact', (req, res)=> {
 
 ///////////// 3ER DESAFIO ///////////////
 const express = require("express");
-const fs = require("fs").promises;
-
+const ProductManager = require("./product-manager");
 const app = express();
 const PORT = 8080;
 
+app.use(express.json());
+
+const productManager = new ProductManager('./src/products.json');
+
 app.get("/", (req, res) => {
+    // "/" hace referencia a la ruta raiz de mi aplicacion
     res.send("Working server with Express");
 });
 
-// Obtener todos los productos con opción de limitar los resultados
+// Endpoint to get all products with the possibility to limit results
 app.get('/products', async (req, res) => {
     try {
-        const limit = req.query.limit ? parseInt(req.query.limit) : null;
-        const products = await getAllProducts(limit);
-        res.json({ products });
+        const products = await productManager.getProducts();
+        const limit = parseInt(req.query.limit);
+
+        if (limit && limit > 0) {
+            res.json(products.slice(0, limit));
+        } else {
+            res.json(products);
+        }
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
-// Obtener un producto específico por su ID
-app.get('/products/:pid', async (req, res) => {
+// Endpoint to get a product by its ID
+app.get('/products/:id', async (req, res) => {
     try {
-        const productId = req.params.pid;
-        const product = await getProductById(productId);
-        
-        if (Object.keys(product).length === 0) {
+        const productId = parseInt(req.params.id);
+        const product = await productManager.getProductById(productId);
+
+        if (product && Object.keys(product).length !== 0) {
+            res.json(product);
+        } else {
             res.status(404).json({ error: 'Product not found' });
-            return;
         }
-        
-        res.json({ product });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
@@ -101,33 +109,3 @@ app.get('/products/:pid', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`);
 });
-
-// Obtener todos los productos con opción de limitar los resultados
-async function getAllProducts(limit = null) {
-    try {
-        const rawData = await fs.readFile('./src/products.json', 'utf-8');
-        let products = JSON.parse(rawData);
-        
-        if (limit !== null) {
-            products = products.slice(0, limit);
-        }
-        
-        return products;
-    } catch (error) {
-        throw error;
-    }
-}
-
-// Obtener un producto por su ID
-async function getProductById(id) {
-    try {
-        const rawData = await fs.readFile('./src/products.json', 'utf-8');
-        const products = JSON.parse(rawData);
-        const product = products.find(prod => prod.id === parseInt(id));
-        return product || {};
-    } catch (error) {
-        throw error;
-    }
-}
-
-
