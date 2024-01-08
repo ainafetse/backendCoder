@@ -18,12 +18,16 @@ class ProductManager {
     async loadProductsFromFile() {
         try {
             const data = await fs.readFile(this.path, 'utf-8');
+            console.log('File data read successfully:', data);
             this.products = JSON.parse(data);
+            console.log('Products parsed from file:', this.products);
             // Actualizando el ultimo id asignado
-            ProductManager.ultId = this.products.reduce((maxId, product) => Math.max(maxId, product.id), 0) + 1;
+            ProductManager.lastId = this.products.reduce((maxId, product) => Math.max(maxId, product.id), 0) + 1;
+            console.log('Last ID updated:', ProductManager.lastId);
         } catch (error) {
             // En caso de error, se ignora y se continúa con el array vacio
             this.products = [];
+            console.error('Error occurred while loading products from file:', error);
         }
     }
 
@@ -60,9 +64,14 @@ class ProductManager {
         console.log("Product added:", newProduct);
     }
 
-    getProducts() {
-        console.log(this.products);
-        return this.products;
+    async getProducts() {
+        try {
+            const arrayProducts = await this.readFile();
+            console.log("Products loaded correctly", this.products);
+            return arrayProducts;
+        } catch (error) {
+            console.log("Error reading the file", error);
+        }
     }
 
     async getProductById(id) {
@@ -93,6 +102,7 @@ class ProductManager {
             if (index !== -1) {
                 //Usando -array splice- para reemplazar el objeto en la posicion del index
                 arrayProducts.splice(index, 1, productUpdated);
+                console.log("Product has been updated succesfully!");
                 await this.saveFile(arrayProducts);
             } else {
                 console.log("Product not found ¯_◉‿◉_/¯");
@@ -113,12 +123,12 @@ class ProductManager {
                 // Utilizo el método de array splice para eliminar el objeto en la posición del index
                 arrayProductos.splice(index, 1);
                 await this.saveFile(arrayProductos);
-                console.log("Producto eliminado satisfactoriamente");
+                console.log("Product eliminated succesfully!");
             } else {
-                console.log("No se encontró el producto");
+                console.log("Product was not found when trying to delete it");
             }
         } catch (error) {
-            console.log("Error al eliminar el producto", error);
+            console.log("Error while trying to eliminate product", error);
         }
     }
 

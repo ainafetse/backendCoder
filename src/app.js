@@ -1,4 +1,4 @@
-/*//Paso 1: importar http 
+/*//Paso 1: importar http
 
 const http = require("http");
 
@@ -6,10 +6,10 @@ const http = require("http");
 
 const server = http.createServer((request, response) => {
     response.end("Working server");
-    //Este método del objeto response me permite enviar una respuesta al cliente. 
+    //Este método del objeto response me permite enviar una respuesta al cliente.
 });
 
-//Tercer pasito: vamos a poner a escuchar a nuestro server en un puerto. 
+//Tercer pasito: vamos a poner a escuchar a nuestro server en un puerto.
 
 const PORT = 8080;
 
@@ -37,7 +37,7 @@ const app = express();
 //Paso 4: Creamos nuestra ruta
 
 app.get("/", (req, res) => {
-    //Cuando utilizo "/" estoy haciendo referencia a la ruta raíz de mi aplicación. 
+    //Cuando utilizo "/" estoy haciendo referencia a la ruta raíz de mi aplicación.
     res.send("Working server with Express");
 });
 
