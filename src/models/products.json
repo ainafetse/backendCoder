@@ -6,7 +6,9 @@
     "price": 600,
     "thumbnail": "no thumbnail",
     "code": "abc123",
-    "stock": 30
+    "status": true,
+    "stock": 30,
+    "category": "clothes"
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "price": 1400,
     "thumbnail": "no thumbnail",
     "code": "abc124",
-    "stock": 40
+    "status": true,
+    "stock": 40,
+    "category": "clothes"
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "price": 1250,
     "thumbnail": "no thumbnail",
     "code": "abc125",
-    "stock": 10
+    "status": true,
+    "stock": 10,
+    "category": "clothes"
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "price": 1800,
     "thumbnail": "no thumbnail",
     "code": "abc126",
-    "stock": 20
+    "status": true,
+    "stock": 20,
+    "category": "clothes"
   },
   {
     "id": 5,
@@ -42,7 +50,9 @@
     "price": 2000,
     "thumbnail": "no thumbnail",
     "code": "abc127",
-    "stock": 15
+    "status": true,
+    "stock": 15,
+    "category": "clothes"
   },
   {
     "id": 6,
@@ -51,7 +61,9 @@
     "price": 800,
     "thumbnail": "no thumbnail",
     "code": "abc128",
-    "stock": 25
+    "status": true,
+    "stock": 25,
+    "category": "clothes"
   },
   {
     "id": 7,
@@ -60,7 +72,9 @@
     "price": 900,
     "thumbnail": "no thumbnail",
     "code": "abc129",
-    "stock": 35
+    "status": true,
+    "stock": 35,
+    "category": "clothes"
   },
   {
     "id": 8,
@@ -69,7 +83,9 @@
     "price": 1500,
     "thumbnail": "no thumbnail",
     "code": "abc130",
-    "stock": 18
+    "status": true,
+    "stock": 18,
+    "category": "clothes"
   },
   {
     "id": 9,
@@ -78,7 +94,9 @@
     "price": 2200,
     "thumbnail": "no thumbnail",
     "code": "abc131",
-    "stock": 12
+    "status": true,
+    "stock": 12,
+    "category": "clothes"
   },
   {
     "id": 10,
@@ -87,6 +105,8 @@
     "price": 2500,
     "thumbnail": "no thumbnail",
     "code": "abc132",
-    "stock": 22
+    "status": true,
+    "stock": 22,
+    "category": "clothes"
   }
 ]

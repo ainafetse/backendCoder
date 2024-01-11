@@ -61,50 +61,27 @@ app.get('/contact', (req, res)=> {
 
 ///////////// 3ER DESAFIO ///////////////
 const express = require("express");
-const ProductManager = require("./product-manager");
 const app = express();
 const PORT = 8080;
+const productsRouter = require("./routes/products.router.js");
+const cartsRouter = require("./routes/carts.router.js");
 
-app.use(express.json());
 
-const productManager = new ProductManager('./src/products.json');
+//Middleware empleada para gestión de APIs
+app.use(express.urlencoded({extended: true}));
+app.use(express.json()); 
 
+//Endpoint de la ruta raíz
 app.get("/", (req, res) => {
-    // "/" hace referencia a la ruta raiz de mi aplicacion
+    // "/" hace referencia a la ruta raiz de mi aplicación
     res.send("Working server with Express");
 });
 
-// Endpoint to get all products with the possibility to limit results
-app.get('/products', async (req, res) => {
-    try {
-        const products = await productManager.getProducts();
-        const limit = parseInt(req.query.limit);
+//Rutas de cart y products 
+app.use("/api", productsRouter);
+app.use("/api", cartsRouter);
 
-        if (limit && limit > 0) {
-            res.json(products.slice(0, limit));
-        } else {
-            res.json(products);
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
-// Endpoint to get a product by its ID
-app.get('/products/:id', async (req, res) => {
-    try {
-        const productId = parseInt(req.params.id);
-        const product = await productManager.getProductById(productId);
-
-        if (product && Object.keys(product).length !== 0) {
-            res.json(product);
-        } else {
-            res.status(404).json({ error: 'Product not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
 app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`);

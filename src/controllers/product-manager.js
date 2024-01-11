@@ -18,9 +18,9 @@ class ProductManager {
     async loadProductsFromFile() {
         try {
             const data = await fs.readFile(this.path, 'utf-8');
-            console.log('File data read successfully:', data);
+            //console.log('File data read successfully:', data);
             this.products = JSON.parse(data);
-            console.log('Products parsed from file:', this.products);
+            //console.log('Products parsed from file:', this.products);
             // Actualizando el ultimo id asignado
             ProductManager.lastId = this.products.reduce((maxId, product) => Math.max(maxId, product.id), 0) + 1;
             console.log('Last ID updated:', ProductManager.lastId);
@@ -31,13 +31,14 @@ class ProductManager {
         }
     }
 
-    //Métodos DESAFIO 1:
+    //Método agregar un producto con validaciones
 
     async addProduct(newObject) {
-        let { title, description, price, thumbnail, code, stock } = newObject;
+        const { title, description, code, price, stock, category, thumbnail} = newObject;
 
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
-            console.log("All fields are required!! （￣ー￣）");
+        //Validación de los campos obligatorios (todos menos thumbnail)
+        if (!title || !description || !code || !price || !stock || !category) {
+            console.log("All required fields are mandatory for adding a product.（￣ー￣）");
             return;
         }
 
@@ -46,22 +47,31 @@ class ProductManager {
             return;
         }
 
-        const newProduct = {
-            id: ++ProductManager.lastId,
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock,
-        };
+        try {
+            // Crear un nuevo producto (objeto)
+            const newProduct = {
+                id: ProductManager.lastId++,
+                title,
+                description,
+                code,
+                price,
+                stock,
+                category,
+                thumbnail: thumbnail || [], // Valor por defecto ya que no es obligatorio
+                status: true // Status es true por defecto
+            };
 
-        this.products.push(newProduct);
+            // Se agrega el producto a la lista
+            this.products.push(newProduct);
 
-        //Guardamos el array
+            // Se guarda la lista actualizada con el nuevo producto
+            await this.saveFile(this.products);
 
-        await this.saveFile(this.products);
-        console.log("Product added:", newProduct);
+            console.log("Product added:", newProduct);
+            return newProduct; // Regresa el producto recien agregado
+        } catch (error) {
+            console.error("Error occurred while adding the product:", error);
+        }
     }
 
     async getProducts() {
@@ -89,8 +99,6 @@ class ProductManager {
             console.log("File could not be read uwu", error);
         }
     }
-
-    //Nuevos metodos DESAFIO 2:
 
     //Actualizando un product
     async updateProduct(id, productUpdated) {
