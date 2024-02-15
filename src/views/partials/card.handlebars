@@ -1,0 +1,9 @@
+{{#each arrayProducts}}
+ <div>
+    <img src={{this.thumbnail}} alt={{this.description}}>
+    <h2>Title:{{this.title}}</h2>
+    <p>Description:{{this.description}}</p>
+    <p>Price:{{this.price}}</p>
+    <button>Add to cart</button>
+ </div>
+ {{/each}}
