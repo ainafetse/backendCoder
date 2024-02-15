@@ -108,5 +108,27 @@
     "status": true,
     "stock": 22,
     "category": "clothes"
+  },
+  {
+    "id": 11,
+    "title": "Purse",
+    "description": "This is a purse. Wow. Cool. A purse.",
+    "code": "abc133",
+    "price": "8500",
+    "stock": "10",
+    "category": "clothes",
+    "thumbnail": "no thumbnail",
+    "status": true
+  },
+  {
+    "id": 12,
+    "title": "Swimsuit",
+    "description": "This is a swimsuit. Wow. Cool. A swimsuit.",
+    "code": "abc134",
+    "price": "3200",
+    "stock": "3",
+    "category": "clothes",
+    "thumbnail": "no thumbnail",
+    "status": true
   }
 ]

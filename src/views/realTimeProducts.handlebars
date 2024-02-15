@@ -1,1 +1,57 @@
-<h1>Real Time Products</h1>
+<div class="container-fluid">
+    <h1>Real Time Products</h1>
+</div>
+
+<div class="container">
+    <div class="row g-5" id="productContainer"></div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div>
+        <h2>Add products here!</h2>
+        </div>
+        <form class="row">
+            <div class="col-6 mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="col-6 mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description">
+            </div>
+            <div class="col-3 mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price">
+            </div>
+            <div class="col-9 mb-3">
+                <label for="thumbnail" class="form-label">Thumbnail</label>
+                <input type="text" class="form-control" id="thumbnail" value="no thumbnail">
+            </div>
+            <div class="col-3 mb-3">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" class="form-control" id="code">
+            </div>
+            <div class="col-3 mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock">
+            </div>
+            <div class="col-3 mb-3">
+                <br>
+                <select class="form-select" id="status">
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+            </div>
+            <div class="col-3 mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category">
+            </div>
+            <button type="submit" class="btn btn-primary" id="addProductBtn">Send</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+<script src="js/index.js"></script>

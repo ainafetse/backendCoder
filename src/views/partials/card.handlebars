@@ -1,9 +1,13 @@
-{{#each arrayProducts}}
- <div>
-    <img src={{this.thumbnail}} alt={{this.description}}>
-    <h2>Title:{{this.title}}</h2>
-    <p>Description:{{this.description}}</p>
-    <p>Price:{{this.price}}</p>
-    <button>Add to cart</button>
+{{#each products}}
+<div class="col-sm-3 mb-3 mb-sm-0">
+   <div class="card">
+      <img src={{this.thumbnail}} class="card-img-top" alt={{this.description}}>
+      <div class="card-body">
+         <h5 class="fw-bold">Title:{{this.title}}</h5>
+         <p>Description:{{this.description}}</p>
+         <p class="fw-bold">Price:${{this.price}}.00</p>
+         <a href="#" class="btn btn-primary">Add to cart</a>
+      </div>
+   </div>
  </div>
  {{/each}}
