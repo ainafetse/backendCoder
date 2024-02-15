@@ -42,7 +42,7 @@ const httpServer = app.listen(PORT, () => {
 
 //socket.io
 
-const io = socket(httpServer);
+/*const io = socket(httpServer);
 
 io.on("connection", (socket) =>{
     console.log("Client Connected Succesfully");
@@ -54,5 +54,18 @@ io.on("connection", (socket) =>{
 
     //Enviar mensajito
     socket.emit("holiwis", "Hello are you there?");
-})
+})*/
 
+const io = new socket.Server(httpServer)
+
+let messages = [];
+
+
+io.on("connection", (socket) => {
+    console.log("Connection succesful with server")
+
+    socket.on("message", data => {
+        messages.push(data);
+        io.emit("messagesLogs", messages);
+    });
+})
