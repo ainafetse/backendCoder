@@ -1,92 +1,132 @@
 [
   {
-    "id": 1,
     "title": "Hat",
     "description": "This is a hat. Wow. Cool. A hat.",
     "price": 600,
     "thumbnail": "no thumbnail",
     "code": "abc123",
-    "stock": 30
+    "status": true,
+    "stock": 30,
+    "category": "clothes"
   },
   {
-    "id": 2,
     "title": "Hoodie",
     "description": "This is a hoodie. Wow. Cool. A hoodie.",
     "price": 1400,
     "thumbnail": "no thumbnail",
     "code": "abc124",
-    "stock": 40
+    "status": true,
+    "stock": 40,
+    "category": "clothes"
   },
   {
-    "id": 3,
     "title": "Skirt",
     "description": "This is a skirt. Wow. Cool. A skirt.",
     "price": 1250,
     "thumbnail": "no thumbnail",
     "code": "abc125",
-    "stock": 10
+    "status": true,
+    "stock": 10,
+    "category": "clothes"
   },
   {
-    "id": 4,
     "title": "Shoes",
     "description": "This is a pair of shoes. Wow. Cool. Shoes.",
     "price": 1800,
     "thumbnail": "no thumbnail",
     "code": "abc126",
-    "stock": 20
+    "status": true,
+    "stock": 20,
+    "category": "clothes"
   },
   {
-    "id": 5,
     "title": "Backpack",
     "description": "This is a backpack. Wow. Cool. A backpack.",
     "price": 2000,
     "thumbnail": "no thumbnail",
     "code": "abc127",
-    "stock": 15
+    "status": true,
+    "stock": 15,
+    "category": "clothes"
   },
   {
-    "id": 6,
     "title": "Sunglasses",
     "description": "This is a pair of sunglasses. Wow. Cool. Sunglasses.",
     "price": 800,
     "thumbnail": "no thumbnail",
     "code": "abc128",
-    "stock": 25
+    "status": true,
+    "stock": 25,
+    "category": "clothes"
   },
   {
-    "id": 7,
     "title": "T-shirt",
     "description": "This is a t-shirt. Wow. Cool. A t-shirt.",
     "price": 900,
     "thumbnail": "no thumbnail",
     "code": "abc129",
-    "stock": 35
+    "status": true,
+    "stock": 35,
+    "category": "clothes"
   },
   {
-    "id": 8,
     "title": "Jeans",
     "description": "This is a pair of jeans. Wow. Cool. Jeans.",
     "price": 1500,
     "thumbnail": "no thumbnail",
     "code": "abc130",
-    "stock": 18
+    "status": true,
+    "stock": 18,
+    "category": "clothes"
   },
   {
-    "id": 9,
     "title": "Dress",
     "description": "This is a dress. Wow. Cool. A dress.",
     "price": 2200,
     "thumbnail": "no thumbnail",
     "code": "abc131",
-    "stock": 12
+    "status": true,
+    "stock": 12,
+    "category": "clothes"
   },
   {
-    "id": 10,
     "title": "Jacket",
     "description": "This is a jacket. Wow. Cool. A jacket.",
     "price": 2500,
     "thumbnail": "no thumbnail",
     "code": "abc132",
-    "stock": 22
+    "status": true,
+    "stock": 22,
+    "category": "clothes"
+  },
+  {
+    "title": "Purse",
+    "description": "This is a purse. Wow. Cool. A purse.",
+    "code": "abc133",
+    "price": "8500",
+    "stock": "10",
+    "category": "clothes",
+    "thumbnail": "no thumbnail",
+    "status": true
+  },
+  {
+    "title": "Swimsuit",
+    "description": "This is a swimsuit. Wow. Cool. A swimsuit.",
+    "code": "abc134",
+    "price": "3200",
+    "stock": "3",
+    "category": "clothes",
+    "thumbnail": "no thumbnail",
+    "status": true
+  },
+  {
+    "title": "Ring",
+    "description": "This is a ring. Wow. Cool. A ring.",
+    "code": "abc135",
+    "price": "250",
+    "stock": "13",
+    "category": "accesories",
+    "thumbnail": "no thumbnail",
+    "status": true
   }
 ]

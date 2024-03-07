@@ -5,6 +5,7 @@ const viewsRouter = require("./routes/views.router");
 const exphbs = require ("express-handlebars");
 const socket = require("socket.io");
 const PORT = 8080;
+const productsRouter = require("./routes/views.router.js");
 
 /*const productsRouter = require("./routes/products.router.js");
 const cartsRouter = require("./routes/carts.router.js");
@@ -14,6 +15,7 @@ const viewsRouter = require("./routes/views.router.js");*/
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("./src/public"));
+app.use("/products", productsRouter);
 
 //Handlebars
 app.engine("handlebars",  exphbs.engine());
@@ -24,6 +26,13 @@ app.set("views" , "./src/views");
 /*app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);*/
 app.use("/", viewsRouter);
+
+//Mongoose:
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://tinkiwinki:x0IPqVQGCOKuUzTz@cluster0.y0uzlx2.mongodb.net/Renkendo?retryWrites=true&w=majority")
+.then (() => console.log("Connected to database"))
+.catch((error) => console.log(error));
+
 
 const server = app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`);
@@ -89,3 +98,4 @@ io.on("connection", async (socket) => {
         io.sockets.emit("products", await productManager.getProducts());
     });
 });
+

@@ -5,8 +5,6 @@ const ProductManager = require("../controllers/product-manager");
 const productManager = new ProductManager("./src/models/products.json");
 
 
-//Pasamos las rutas que teniamos en la app: 
-
 // Endpoint to get all products with the possibility to limit results
 router.get('/products', async (req, res) => {
     try {

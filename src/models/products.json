@@ -130,5 +130,16 @@
     "category": "clothes",
     "thumbnail": "no thumbnail",
     "status": true
+  },
+  {
+    "id": 13,
+    "title": "Ring",
+    "description": "This is a ring. Wow. Cool. A ring.",
+    "code": "abc135",
+    "price": "250",
+    "stock": "13",
+    "category": "accesories",
+    "thumbnail": "no thumbnail",
+    "status": true
   }
 ]
